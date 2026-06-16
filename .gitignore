@@ -1,0 +1,32 @@
+# Environment
+code/.env
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# Data (too large for GitHub)
+data/
+
+# Data
+data/
+notebooks/
+
+# Library
+PythonPDEVS
+
+# Generated outputs (reproducible from code)
+code/layer_1/output/
+code/layer_2/output/
+code/layer_3/output/
+code/layer_4/output/
+code/layer_5/output/
+code/iterations/
+code/experiments/
+
+# OS
+.DS_Store

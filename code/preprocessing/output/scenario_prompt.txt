@@ -1,0 +1,92 @@
+You are a power grid emergency operator managing a 24-bus transmission system (RTS-GMLC Area 1) during an extreme heatwave.
+
+## Scenario
+Timestamp: 2020-07-16, interval 169 (14:00 local time, peak solar and load).
+Load has increased by 60% due to heatwave conditions.
+Two generators are offline for maintenance: 123_STEAM_3 (350 MW) and 115_STEAM_3 (155 MW).
+
+## Thermal Generator Status
+Each generator shows: bus, type, current output (MW_inj), min (PMin_MW), max (PMax_MW), ramp rate (MW/min).
+
+  - 101_CT_1 @ bus 101 [CT]: MW_inj=8, PMin=8, PMax=20, ramp=3.0 MW/min
+  - 101_CT_2 @ bus 101 [CT]: MW_inj=8, PMin=8, PMax=20, ramp=3.0 MW/min
+  - 101_STEAM_3 @ bus 101 [STEAM]: MW_inj=76, PMin=30, PMax=76, ramp=2.0 MW/min
+  - 101_STEAM_4 @ bus 101 [STEAM]: MW_inj=76, PMin=30, PMax=76, ramp=2.0 MW/min
+  - 102_CT_1 @ bus 102 [CT]: MW_inj=8, PMin=8, PMax=20, ramp=3.0 MW/min
+  - 102_CT_2 @ bus 102 [CT]: MW_inj=8, PMin=8, PMax=20, ramp=3.0 MW/min
+  - 102_STEAM_3 @ bus 102 [STEAM]: MW_inj=76, PMin=30, PMax=76, ramp=2.0 MW/min
+  - 102_STEAM_4 @ bus 102 [STEAM]: MW_inj=76, PMin=30, PMax=76, ramp=2.0 MW/min
+  - 107_CC_1 @ bus 107 [CC]: MW_inj=355, PMin=170, PMax=355, ramp=4.1 MW/min
+  - 113_CT_1 @ bus 113 [CT]: MW_inj=55, PMin=22, PMax=55, ramp=3.7 MW/min
+  - 113_CT_2 @ bus 113 [CT]: MW_inj=55, PMin=22, PMax=55, ramp=3.7 MW/min
+  - 113_CT_3 @ bus 113 [CT]: MW_inj=55, PMin=22, PMax=55, ramp=3.7 MW/min
+  - 113_CT_4 @ bus 113 [CT]: MW_inj=55, PMin=22, PMax=55, ramp=3.7 MW/min
+  - 115_STEAM_1 @ bus 115 [STEAM]: MW_inj=5, PMin=5, PMax=12, ramp=1.0 MW/min
+  - 115_STEAM_2 @ bus 115 [STEAM]: MW_inj=5, PMin=5, PMax=12, ramp=1.0 MW/min
+  - 116_STEAM_1 @ bus 116 [STEAM]: MW_inj=155, PMin=62, PMax=155, ramp=3.0 MW/min
+  - 118_CC_1 @ bus 118 [CC]: MW_inj=355, PMin=170, PMax=355, ramp=4.1 MW/min
+  - 123_STEAM_2 @ bus 123 [STEAM]: MW_inj=155, PMin=62, PMax=155, ramp=3.0 MW/min
+  - 123_CT_1 @ bus 123 [CT]: MW_inj=55, PMin=22, PMax=55, ramp=3.7 MW/min
+  - 123_CT_4 @ bus 123 [CT]: MW_inj=55, PMin=22, PMax=55, ramp=3.7 MW/min
+  - 123_CT_5 @ bus 123 [CT]: MW_inj=55, PMin=22, PMax=55, ramp=3.7 MW/min
+  - 121_NUCLEAR_1 @ bus 121 [NUCLEAR]: MW_inj=400, PMin=396, PMax=400, ramp=20.0 MW/min
+
+## Overloaded Transmission Lines
+The following lines exceed their continuous rating and will trigger automatic relay trips if not resolved:
+
+  - Line A21: flow = -544.2 MW, limit = 500 MW (overload = 44.2 MW)
+  - Line A22: flow = -554.7 MW, limit = 500 MW (overload = 54.7 MW)
+  - Line A28: flow = -514.7 MW, limit = 500 MW (overload = 14.7 MW)
+
+## Available DG Shedding Actions
+You may reduce (shed) distributed generation at the following buses.
+Each bus shows: current generation (MW) and maximum sheddable capacity (MW).
+You CANNOT shed more than the DG capacity at each bus.
+
+  - Bus 101: MW_gen = 235.5 MW, DG_capacity = 104.6 MW
+  - Bus 102: MW_gen = 199.6 MW, DG_capacity = 50.9 MW
+  - Bus 103: MW_gen = 37.6 MW, DG_capacity = 61.5 MW
+  - Bus 104: MW_gen = 18.4 MW, DG_capacity = 26.8 MW
+  - Bus 113: MW_gen = 278.3 MW, DG_capacity = 93.6 MW
+  - Bus 118: MW_gen = 418.2 MW, DG_capacity = 94.1 MW
+  - Bus 119: MW_gen = 39.8 MW, DG_capacity = 66.6 MW
+  - Bus 122: MW_gen = 344.4 MW, DG_capacity = 1013.5 MW
+
+## Available Thermal Reduction Actions
+You may reduce thermal generator output down to PMin. Each generator shows current output and minimum.
+
+  - 101_STEAM_3 @ bus 101 [STEAM]: current=76 MW, PMin=30 MW, max_reduction=46 MW
+  - 101_STEAM_4 @ bus 101 [STEAM]: current=76 MW, PMin=30 MW, max_reduction=46 MW
+  - 102_STEAM_3 @ bus 102 [STEAM]: current=76 MW, PMin=30 MW, max_reduction=46 MW
+  - 102_STEAM_4 @ bus 102 [STEAM]: current=76 MW, PMin=30 MW, max_reduction=46 MW
+  - 107_CC_1 @ bus 107 [CC]: current=355 MW, PMin=170 MW, max_reduction=185 MW
+  - 113_CT_1 @ bus 113 [CT]: current=55 MW, PMin=22 MW, max_reduction=33 MW
+  - 113_CT_2 @ bus 113 [CT]: current=55 MW, PMin=22 MW, max_reduction=33 MW
+  - 113_CT_3 @ bus 113 [CT]: current=55 MW, PMin=22 MW, max_reduction=33 MW
+  - 113_CT_4 @ bus 113 [CT]: current=55 MW, PMin=22 MW, max_reduction=33 MW
+  - 116_STEAM_1 @ bus 116 [STEAM]: current=155 MW, PMin=62 MW, max_reduction=93 MW
+  - 118_CC_1 @ bus 118 [CC]: current=355 MW, PMin=170 MW, max_reduction=185 MW
+  - 123_STEAM_2 @ bus 123 [STEAM]: current=155 MW, PMin=62 MW, max_reduction=93 MW
+  - 123_CT_1 @ bus 123 [CT]: current=55 MW, PMin=22 MW, max_reduction=33 MW
+  - 123_CT_4 @ bus 123 [CT]: current=55 MW, PMin=22 MW, max_reduction=33 MW
+  - 123_CT_5 @ bus 123 [CT]: current=55 MW, PMin=22 MW, max_reduction=33 MW
+
+## Instructions
+Generate a minimal action schedule to resolve all overloads.
+You may combine both action types in the same schedule.
+Output ONLY a JSON list of actions, no explanation. Two action formats:
+
+```json
+[
+  {"t": <seconds>, "type": "gen_reduce", "gen_uid": "<uid>", "target_MW": <mw>},
+  {"t": <seconds>, "type": "dg_shed",    "bus": <bus_id>,    "shed_MW": <mw>},
+  ...
+]
+```
+
+Rules:
+  - gen_reduce: target_MW must be >= PMin and <= current output of that generator
+  - dg_shed: shed_MW must be > 0 and <= DG_capacity of that bus
+  - t >= 0 (seconds from now)
+  - Use the minimum number of actions needed
+  - Prefer gen_reduce for thermal generators when the overload is on a line fed by that generator

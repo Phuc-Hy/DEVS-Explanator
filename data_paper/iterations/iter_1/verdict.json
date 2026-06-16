@@ -1,0 +1,21 @@
+{
+  "verdict": "invalid",
+  "violations": [
+    {
+      "t": 150.0,
+      "model": "A11",
+      "event": "RELAY_TRIP",
+      "branch_uid": "A11",
+      "from_bus": 107,
+      "to_bus": 108,
+      "flow_mw": 180.0,
+      "cont_rating": 175.0
+    },
+    {
+      "t": 150.0,
+      "model": "B108",
+      "event": "BLACKOUT",
+      "bus_id": 108
+    }
+  ]
+}

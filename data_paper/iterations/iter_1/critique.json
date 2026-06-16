@@ -1,0 +1,31 @@
+{
+  "verdict": "invalid",
+  "critique_items": [
+    {
+      "violation": {
+        "event": "RELAY_TRIP",
+        "model": "A11",
+        "timestamp": 150.0
+      },
+      "causal_chain": [
+        "101_STEAM_3:GEN_REDUCE --[STEAM output change at bus 101: \u0394P propagates via PTDF to all branches]--> B101:GEN_EFFECT",
+        "B101:GEN_EFFECT --[PTDF[A11,101]: injection change at bus 101 shifts flow on A11 (107\u2192108)]--> A11:RELAY_TRIP"
+      ],
+      "correction": "The pre-existing overload of 5.0 MW remained unresolved and A11 tripped at flow 180.0 MW > rating 175.0 MW. Root cause: corrective action targeted a bus with insufficient PTDF sensitivity to A11. The bus with highest PTDF sensitivity is bus 107 (PTDF[A11,107] = 1.0). Recommended correction: reduce 107_CC_1 by at least 5.0 MW to bring A11 flow within its continuous rating of 175.0 MW."
+    },
+    {
+      "violation": {
+        "event": "BLACKOUT",
+        "model": "B108",
+        "timestamp": 150.0
+      },
+      "causal_chain": [
+        "101_STEAM_3:GEN_REDUCE --[STEAM output change at bus 101: \u0394P propagates via PTDF to all branches]--> B101:GEN_EFFECT",
+        "B101:GEN_EFFECT --[PTDF[A11,101]: injection change at bus 101 shifts flow on A11 (107\u2192108)]--> A11:RELAY_TRIP",
+        "A11:RELAY_TRIP --[cascade: trip of A11 isolates bus 108]--> B108:BLACKOUT"
+      ],
+      "correction": "Bus 108 lost supply at t=150.0 s due to trip of branch A11. Resolve the RELAY_TRIP violation on A11 to prevent this blackout."
+    }
+  ],
+  "summary": "The policy produced 2 violation(s). Please revise the action schedule according to the corrections below and resubmit."
+}

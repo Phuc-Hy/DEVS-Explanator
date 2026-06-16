@@ -1,0 +1,126 @@
+{
+  "timeline": [
+    {
+      "t": 150.0,
+      "model": "101_STEAM_3",
+      "event": "GEN_REDUCE",
+      "gen_uid": "101_STEAM_3",
+      "bus_id": 101,
+      "unit_type": "STEAM",
+      "delta_mw": -5.0,
+      "p_before": 76.0,
+      "p_after": 71.0,
+      "ramp_time_s": 150.0
+    },
+    {
+      "t": 150.0,
+      "model": "B101",
+      "event": "GEN_EFFECT",
+      "bus_id": 101,
+      "gen_delta_mw": -5.0
+    },
+    {
+      "t": 150.0,
+      "model": "A11",
+      "event": "RELAY_TRIP",
+      "branch_uid": "A11",
+      "from_bus": 107,
+      "to_bus": 108,
+      "flow_mw": 180.0,
+      "cont_rating": 175.0
+    },
+    {
+      "t": 150.0,
+      "model": "B108",
+      "event": "BLACKOUT",
+      "bus_id": 108
+    }
+  ],
+  "causal_links": [
+    {
+      "t_cause": 150.0,
+      "cause": {
+        "t": 150.0,
+        "model": "B101",
+        "event": "GEN_EFFECT",
+        "bus_id": 101,
+        "gen_delta_mw": -5.0
+      },
+      "t_effect": 150.0,
+      "effect": {
+        "t": 150.0,
+        "model": "A11",
+        "event": "RELAY_TRIP",
+        "branch_uid": "A11",
+        "from_bus": 107,
+        "to_bus": 108,
+        "flow_mw": 180.0,
+        "cont_rating": 175.0
+      },
+      "mechanism": "PTDF[A11,101]: injection change at bus 101 shifts flow on A11 (107\u2192108)"
+    },
+    {
+      "t_cause": 150.0,
+      "cause": {
+        "t": 150.0,
+        "model": "A11",
+        "event": "RELAY_TRIP",
+        "branch_uid": "A11",
+        "from_bus": 107,
+        "to_bus": 108,
+        "flow_mw": 180.0,
+        "cont_rating": 175.0
+      },
+      "t_effect": 150.0,
+      "effect": {
+        "t": 150.0,
+        "model": "B108",
+        "event": "BLACKOUT",
+        "bus_id": 108
+      },
+      "mechanism": "cascade: trip of A11 isolates bus 108"
+    },
+    {
+      "t_cause": 150.0,
+      "cause": {
+        "t": 150.0,
+        "model": "101_STEAM_3",
+        "event": "GEN_REDUCE",
+        "gen_uid": "101_STEAM_3",
+        "bus_id": 101,
+        "unit_type": "STEAM",
+        "delta_mw": -5.0,
+        "p_before": 76.0,
+        "p_after": 71.0,
+        "ramp_time_s": 150.0
+      },
+      "t_effect": 150.0,
+      "effect": {
+        "t": 150.0,
+        "model": "B101",
+        "event": "GEN_EFFECT",
+        "bus_id": 101,
+        "gen_delta_mw": -5.0
+      },
+      "mechanism": "STEAM output change at bus 101: \u0394P propagates via PTDF to all branches"
+    }
+  ],
+  "violation_nodes": [
+    {
+      "t": 150.0,
+      "model": "A11",
+      "event": "RELAY_TRIP",
+      "branch_uid": "A11",
+      "from_bus": 107,
+      "to_bus": 108,
+      "flow_mw": 180.0,
+      "cont_rating": 175.0
+    },
+    {
+      "t": 150.0,
+      "model": "B108",
+      "event": "BLACKOUT",
+      "bus_id": 108
+    }
+  ]
+}
