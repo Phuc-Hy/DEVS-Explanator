@@ -2,7 +2,7 @@
 
 Simulation-Grounded Verification and Causal Feedback for LLM-Generated Infrastructure Policies
 
-Paper submitted to Winter Simulation Conference (WSC) 2026.
+Paper accepted at Winter Simulation Conference (WSC) 2026.
 
 ## Overview
 
@@ -93,4 +93,7 @@ code/
 
 ## Authors
 
-Ho Phuc Hy, Ali Ayadi, Claudia Frydman
+Ho Phuc Hy <sup>1</sup>, Ali Ayadi <sup>2</sup>, and Claudia Frydman <sup>1</sup>
+
+<sup>1</sup> LIS — UMR CNRS 7020 — University of Aix-Marseille, Marseille, France  
+<sup>2</sup> ICube — UMR CNRS 7357 — University of Strasbourg, Strasbourg, France
