@@ -29,12 +29,12 @@ Place the data under `data/RTS-GMLC/RTS_Data/`.
 ## Requirements
 
 - Python 3.10+
-- PythonPDEVS (included under `PythonPDEVS/src/`)
-- Dependencies:
 
 ```
-pip install google-genai python-dotenv
+pip install -r requirements.txt
 ```
+
+PythonPDEVS is installed automatically from https://github.com/capocchi/PythonPDEVS via the requirements file.
 
 ## Setup
 
